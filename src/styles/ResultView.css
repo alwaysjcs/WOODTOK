@@ -1,0 +1,117 @@
+/* ===========================
+   Result View
+=========================== */
+
+.result-product {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.result-type-title {
+  margin-top: 28px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: #f3f3f3;
+  border-left: 6px solid #3b82f6;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.result-block {
+  margin-bottom: 24px;
+}
+
+.result-size-title {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-table th {
+  background: #f7f7f7;
+  font-weight: 700;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid #dcdcdc;
+  padding: 8px;
+  text-align: center;
+}
+
+.shortage{
+    color:#d32f2f;
+    font-weight:700;
+    background:#ffeaea;
+}
+
+.result-table tbody tr:has(.shortage){
+    background:#fff3f3;
+}
+
+.result-table tbody tr:has(.shortage):hover{
+    background:#ffe3e3;
+}
+
+.result-size-card{
+    margin:14px 0 18px;
+    padding:12px 14px;
+    border:1px solid #cfcfcf;
+    border-radius:10px;
+    background:#fff;
+    box-shadow:0 1px 4px rgba(0,0,0,.08);
+    transition:.2s;
+}
+
+.result-size-card:hover{
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
+}
+
+.result-size-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:10px;
+    padding-bottom:8px;
+    border-bottom:2px solid #3b82f6;
+}
+
+.result-size-card{
+    margin:14px 0 18px;
+    padding:12px 14px;
+    border:1px solid #d5d5d5;
+    border-radius:10px;
+    background:#fff;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+}
+
+.result-size-card:hover{
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
+}
+
+.result-size-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+    padding-bottom:8px;
+    border-bottom:2px solid #1976d2;
+    font-size:22px;
+    font-weight:700;
+}
+
+.result-table{
+    font-size:15px;
+}
+
+.result-table th{
+    background:#f8f9fb;
+}
