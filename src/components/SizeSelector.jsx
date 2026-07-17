@@ -5,8 +5,6 @@ function SizeSelector({
 }) {
   return (
     <>
-      <label>사이즈</label>
-
       <div className="size-list">
 
         {sizes.map((size) => (

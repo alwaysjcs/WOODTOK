@@ -35,14 +35,15 @@ h1 {
 .card {
   background: white;
   border-radius: 16px;
-  padding: 20px;
-  margin-top: 20px;
+  padding: 14px;
+  margin-top: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: left;
 }
 
 h2 {
-  margin-top: 0;
+  margin:0 0 10px;
+  font-size:28px;
   text-align: left;
 }
 
@@ -55,8 +56,8 @@ label {
     text-align: left;
     font-size: 18px;
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 12px;
+    margin-bottom: 6px;
 }
 select{
     width:100%;
@@ -68,21 +69,24 @@ select{
 
 .button-group {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
 .button-group button {
   flex: 1;
   min-width: 90px;
-  height: 50px;
+  height: 40px;
+
   border: 2px solid var(--primary);
-  border-radius: 12px;
+  border-radius: 10px;
+
   background: var(--surface);
   color: var(--primary);
+
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -101,24 +105,24 @@ select{
 }
 
 .current-panel {
-  margin-top: 30px;
-  padding: 20px;
+  margin-top: 8px;
+  padding: 8px 12px;
   border: 2px solid #1976d2;
   border-radius: 16px;
   text-align: center;
 }
 
 .current-size {
-  font-size: 48px;
+  font-size: 46px;
   font-weight: bold;
   color: #1976d2;
-  margin: 20px 0;
+  margin: 12px 0;
 }
 
 .current-count {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
 .current-buttons {
@@ -129,11 +133,11 @@ select{
 
 .plus-button,
 .minus-button {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   font-size: 42px;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   background: #1976d2;
   color: white;
   cursor: pointer;
@@ -157,11 +161,12 @@ select{
   flex-direction: column;
   gap: 8px;
   margin-top: 10px;
+  font-size: 22px;
 }
 
 .size-button {
   width: 100%;
-  height: 60px;
+  height: 40px;
   border: 2px solid #1976d2;
   border-radius: 10px;
   background: white;
@@ -170,7 +175,7 @@ select{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 14px;
   cursor: pointer;
 }
 
@@ -179,24 +184,9 @@ select{
   color: white;
 }
 
-.current-card {
-  margin-top: 25px;
-  padding: 20px;
-  border: 2px solid #1976d2;
-  border-radius: 16px;
-  text-align: center;
-}
-
 .current-info {
-    margin-bottom: 8px;
-}
-
-.current-size {
-    margin: 6px 0;
-}
-
-.current-count {
-    margin-top: 4px;
+    margin-bottom:2px;
+    font-size:18px;
 }
 
 .summary {
@@ -303,3 +293,75 @@ select{
   font-weight: bold;
 }
 
+/* ============================= */
+/* Color + Size 2 Column Layout  */
+/* ============================= */
+
+.color-size-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.color-column,
+.size-column {
+  min-width: 0;
+}
+
+.color-column .button-group,
+.size-column .size-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.color-column label,
+.size-column label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.color-column .button-group button {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    flex: none;
+}
+
+.color-column .button-group{
+    gap:6px;
+}
+.color-column .button-group button{
+    height:36px;
+}
+
+.size-list {
+    gap: 6px;
+}
+
+.size-button {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 20px;
+}
+
+.inline-selector{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.inline-label{
+    width:44px;
+    font-size:16px;
+    font-weight:700;
+    flex-shrink:0;
+}
+
+.inline-selector .button-group{
+    flex:1;
+    margin-bottom:0;
+}

@@ -198,17 +198,29 @@ function App() {
     setType={setType}
 />
 
-<ColorSelector
-    colors={colors}
-    color={color}
-    setColor={setColor}
-/>
+<div className="color-size-row">
 
-<SizeSelector
-    sizes={sizes}
-    selectedSize={selectedSize}
-    setSelectedSize={setSelectedSize}
-/>
+  <div className="color-column">
+
+    <ColorSelector
+      colors={colors}
+      color={color}
+      setColor={setColor}
+    />
+
+  </div>
+
+  <div className="size-column">
+
+    <SizeSelector
+      sizes={sizes}
+      selectedSize={selectedSize}
+      setSelectedSize={setSelectedSize}
+    />
+
+  </div>
+
+</div>
 
 <CurrentPanel
   mode={mode}

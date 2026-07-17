@@ -5,8 +5,6 @@ function ColorSelector({
 }) {
   return (
     <>
-      <label>색상</label>
-
       <div className="button-group">
         {colors.map((item) => (
           <button

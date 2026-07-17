@@ -1,7 +1,10 @@
 function ProductSelector({ product, setProduct }) {
   return (
-    <>
-      <label>제품</label>
+    <div className="inline-selector">
+
+      <div className="inline-label">
+        제품
+      </div>
 
       <div className="button-group">
         <button
@@ -20,7 +23,8 @@ function ProductSelector({ product, setProduct }) {
           가벽
         </button>
       </div>
-    </>
+
+    </div>
   );
 }
 
