@@ -8,6 +8,10 @@
   margin-bottom: 18px;
 }
 
+.result-type{
+    margin-top:14px;
+}
+
 .result-type-title {
     margin-top: 28px;
     margin-bottom: 18px;
@@ -23,6 +27,11 @@
   margin-bottom: 24px;
 }
 
+.result-size h4{
+    margin:0 0 4px;
+    font-size:16px;
+}
+
 .result-size-title {
   margin-bottom: 8px;
   font-size: 18px;
@@ -36,14 +45,13 @@
 
 .result-table th {
   background: #f7f7f7;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .result-table th,
-.result-table td {
-  border: 1px solid #dcdcdc;
-  padding: 8px;
-  text-align: center;
+.result-table td{
+    padding:5px 4px;
+    font-size:14px;
 }
 
 .shortage{

@@ -5,11 +5,20 @@ function Header({ selectedDate, setSelectedDate }) {
   const dateRef = useRef(null);
 
   const openDatePicker = () => {
-    if (dateRef.current?.showPicker) {
-      dateRef.current.showPicker();
-    } else {
-      dateRef.current?.click();
-    }
+
+     if (!dateRef.current) return;
+
+     try {
+       if (typeof dateRef.current.showPicker === "function") {
+         dateRef.current.showPicker();
+         return;
+       }
+     } catch (e) {
+     }
+
+     dateRef.current.focus();
+    dateRef.current.click();
+
   };
 
   const week = ["일", "월", "화", "수", "목", "금", "토"];
