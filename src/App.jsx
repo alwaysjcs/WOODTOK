@@ -152,25 +152,11 @@ function App() {
   return (
     <div className="app">
 
-    <Header todayText={`작업일 : ${todayText}`} />
-
-    <div className="card">
-    
-      <h2>작업 날짜</h2>
-    
-      <input
-        type="date"
-        value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "12px",
-          fontSize: "18px"
-        }}
-      />
-    
-    </div>
-    
+    <Header
+      selectedDate={selectedDate}
+      setSelectedDate={setSelectedDate}
+    />
+   
     <ModeSelector
       mode={mode}
       setMode={setMode}
@@ -179,25 +165,18 @@ function App() {
       {mode !== "result" && (
       <div className="card">
 
-<h2>
-
-{mode === "order"
-    ? "주문 입력"
-    : "재고 입력"}
-
-</h2>
-
 <ProductSelector
   product={product}
   setProduct={setProduct}
 />
+<hr className="section-divider" />
 
 <TypeSelector
     types={types}
     type={type}
     setType={setType}
 />
-
+<hr className="section-divider" />
 <div className="color-size-row">
 
   <div className="color-column">
@@ -253,12 +232,6 @@ function App() {
       orderCounts={orderCounts}
       stockCounts={stockCounts}
     />
-
-    <div style={{ marginTop: "20px" }}>
-      <button>
-        Excel 다운로드
-      </button>
-    </div>
 
   </>
 

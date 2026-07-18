@@ -14,18 +14,22 @@ function CurrentPanel({
 
       <h2>
         {mode === "order"
-          ? "현재 작업"
+          ? "현재 주문"
           : "현재 재고"}
       </h2>
 
-      <div className="current-card">
+      <div className="current-panel">
 
         <div className="current-info">
-          {product} / {type} / {color}
+          {product} · {type} · {color}
         </div>
 
         <div className="current-size">
           {selectedSize}
+        </div>
+
+        <div className="current-label">
+          현재 수량
         </div>
 
         <div className="current-count">
@@ -41,7 +45,7 @@ function CurrentPanel({
           className="plus-button"
           onClick={increaseCount}
         >
-          ➕
+          ＋
         </button>
 
         <button
@@ -49,7 +53,7 @@ function CurrentPanel({
           className="minus-button"
           onClick={decreaseCount}
         >
-          ➖
+          －
         </button>
 
       </div>
