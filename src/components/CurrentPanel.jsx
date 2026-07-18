@@ -14,45 +14,49 @@ function CurrentPanel({
 
       <h2>
         {mode === "order"
-          ? "현재 주문"
-          : "현재 재고"}
+          ? "주문 입력"
+          : "재고 입력"}
       </h2>
 
-      <div className="current-panel">
+      <div className="current-row">
 
-        <div className="current-info">
-          {product} · {type} · {color}
-        </div>
+  <div className="current-panel">
 
-        <div className="current-size">
-          {selectedSize}
-        </div>
+    <div className="current-info">
+      {product} · {type} · {color}
+    </div>
 
-        <div className="current-label">
-            현재 수량 : {currentCount}개
-        </div>
+    <div className="current-size">
+      {selectedSize}
+    </div>
 
-      </div>
+    <div className="current-label">
+      현재 수량 : {currentCount}개
+    </div>
 
-      <div className="current-buttons">
+  </div>
 
-        <button
-          type="button"
-          className="plus-button"
-          onClick={increaseCount}
-        >
-          ＋
-        </button>
+  <div className="current-buttons">
 
-        <button
-          type="button"
-          className="minus-button"
-          onClick={decreaseCount}
-        >
-          －
-        </button>
+    <button
+      type="button"
+      className="plus-button"
+      onClick={increaseCount}
+    >
+      ＋
+    </button>
 
-      </div>
+    <button
+      type="button"
+      className="minus-button"
+      onClick={decreaseCount}
+    >
+      －
+    </button>
+
+  </div>
+
+</div>
     </>
   );
 }
