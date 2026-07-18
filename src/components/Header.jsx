@@ -6,19 +6,24 @@ function Header({ selectedDate, setSelectedDate }) {
 
   const openDatePicker = () => {
 
-     if (!dateRef.current) return;
-
-     try {
-       if (typeof dateRef.current.showPicker === "function") {
-         dateRef.current.showPicker();
-         return;
-       }
-     } catch (e) {
-     }
-
-     dateRef.current.focus();
-    dateRef.current.click();
-
+    const input = dateRef.current;
+  
+    if (!input) return;
+  
+    // Chrome
+    if (typeof input.showPicker === "function") {
+      try {
+        input.showPicker();
+        return;
+      } catch (_) {}
+    }
+  
+    // Safari
+    input.focus();
+  
+    setTimeout(() => {
+      input.click();
+    }, 0);
   };
 
   const week = ["일", "월", "화", "수", "목", "금", "토"];
@@ -30,31 +35,31 @@ function Header({ selectedDate, setSelectedDate }) {
      ` (${week[date.getDay()]})`;
 
   return (
-    <header className="header">
-      <div className="header-left">
-        <img
-          src={logo}
-          alt="WOODTOK"
-          className="header-logo"
-        />
-      </div>
+  <header className="header">
+    <div className="header-left">
+      <img
+        src={logo}
+        alt="WOODTOK"
+        className="header-logo"
+      />
+    </div>
 
-      <div
-        className="header-date"
-        onClick={openDatePicker}
-      >
-        📅 {displayDate}
+    <div
+      className="header-date"
+      onClick={openDatePicker}
+    >
+      📅 {displayDate}
 
-        <input
-          ref={dateRef}
-          type="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-          className="hidden-date-input"
-        />
-      </div>
-    </header>
-  );
+      <input
+        ref={dateRef}
+        type="date"
+        value={selectedDate}
+        onChange={(e) => setSelectedDate(e.target.value)}
+        className="hidden-date-input"
+      />
+    </div>
+  </header>
+);
 }
 
 export default Header;

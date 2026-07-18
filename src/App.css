@@ -36,7 +36,7 @@ h1 {
   background: white;
   border-radius: 14px;
   padding: 10px;
-  margin-top: 0x;
+  margin-top: 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   text-align: left;
 }
@@ -352,9 +352,11 @@ select{
 .hidden-date-input{
     position:absolute;
     opacity:0;
-    pointer-events:none;
-    width:0;
-    height:0;
+
+    width:1px;
+    height:1px;
+
+    overflow:hidden;
 }
 
 /* =========================
@@ -389,21 +391,22 @@ select{
 }
 
 .header-date{
+    position:relative;
+
     display:flex;
     align-items:center;
-
     gap:4px;
 
     font-size:14px;
     font-weight:600;
 
     background:#f5f7fa;
-
     padding:6px 10px;
-
     border-radius:8px;
 
     cursor:pointer;
+
+    overflow:hidden;
 }
 
 .header-date:hover{
@@ -433,12 +436,11 @@ select{
 }
 
 .current-size{
-    font-size:52px;
+    font-size:30px;
     font-weight:800;
     color:#1976d2;
     line-height:1;
-    margin-top:4px;
-    margin-bottom:2px;
+    margin:2px 0;
 }
 
 .current-label{

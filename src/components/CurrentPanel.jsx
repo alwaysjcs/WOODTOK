@@ -29,11 +29,7 @@ function CurrentPanel({
         </div>
 
         <div className="current-label">
-          현재 수량
-        </div>
-
-        <div className="current-count">
-          {currentCount} 개
+            현재 수량 : {currentCount}개
         </div>
 
       </div>
