@@ -420,12 +420,14 @@ select{
     min-height: 48px;
 
     background:#f5f7fa;
-    padding:10px 14px;
     border-radius:8px;
 
     cursor:pointer;
 
     overflow:hidden;
+    min-height: 56px;
+    padding: 14px 18px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .header-date:hover{
