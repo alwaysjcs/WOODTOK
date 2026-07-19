@@ -142,6 +142,20 @@ function App() {
     );
 
   const todayTotal = basicTotal + denseTotal;
+  const resetTestData = () => {
+
+    const ok = window.confirm(
+        "테스트 데이터를 모두 삭제하시겠습니까?"
+    );
+
+    if (!ok) return;
+
+    localStorage.removeItem("factoryOrder");
+    localStorage.removeItem("factoryStock");
+
+    location.reload();
+
+  };
 
   const [stockInfo, setStockInfo] = useState({
       inherited: false,
@@ -155,7 +169,6 @@ function App() {
       selectedDate={selectedDate}
       setSelectedDate={setSelectedDate}
     />
-   
     <ModeSelector
       mode={mode}
       setMode={setMode}
@@ -236,6 +249,20 @@ function App() {
        denseTotal={denseTotal}
        todayTotal={todayTotal}
     />
+        <div style={{ textAlign: "right", marginBottom: "10px" }}>
+        <button
+            onClick={resetTestData}
+            style={{
+                padding: "6px 12px",
+                fontSize: "13px",
+                borderRadius: "6px",
+                cursor: "pointer"
+            }}
+        >
+            🗑 초기화
+        </button>
+    </div>
+
     </div>
 
 )}
