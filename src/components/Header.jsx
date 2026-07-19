@@ -54,7 +54,15 @@ function Header({ selectedDate, setSelectedDate }) {
         ref={dateRef}
         type="date"
         value={selectedDate}
-        onChange={(e) => setSelectedDate(e.target.value)}
+        onChange={(e) => {
+
+            if (!e.target.value) {
+                return;
+            }
+        
+            setSelectedDate(e.target.value);
+        
+        }}
         className="hidden-date-input"
       />
     </div>

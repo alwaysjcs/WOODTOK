@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ResultView from "./components/ResultView";
 import ModeSelector from "./components/ModeSelector";
 import Header from "./components/Header";
@@ -10,6 +10,14 @@ import ProductSelector from "./components/ProductSelector";
 import TypeSelector from "./components/TypeSelector";
 import ColorSelector from "./components/ColorSelector";
 import { PRODUCTS } from "./constants/products";
+import { updateCurrentCount } from "./services/countService";
+
+import {
+    loadOrderData,
+    loadStockData,
+    getInitialStockData,
+    saveCurrentData
+} from "./services/storageService";
 
 function App() {
   const week = ["일", "월", "화", "수", "목", "금", "토"];
@@ -34,8 +42,13 @@ function App() {
   const [color, setColor] = useState("오크");
   const [selectedSize, setSelectedSize] = useState("616");
 
-  const [orderCounts, setOrderCounts] = useState({});
-  const [stockCounts, setStockCounts] = useState({});
+  const [orderCounts, setOrderCounts] = useState(() =>
+      loadOrderData(formatDate(new Date()))
+  );
+
+  const [stockCounts, setStockCounts] = useState(() =>
+    loadStockData(formatDate(new Date()))
+  );
 
   const types = Object.keys(PRODUCTS[product]).filter(
   (key) => key !== "colors"
@@ -61,75 +74,56 @@ function App() {
   const currentCount = currentCounts[selectedSize] || 0;
 
   const increaseCount = () => {
-    setCounts((prev) => {
   
-      const data = { ...(prev[currentKey] || {}) };
-  
-      data[selectedSize] = (data[selectedSize] || 0) + 1;
-  
-      return {
-        ...prev,
-        [currentKey]: data
-      };
-  
-    });
+      updateCurrentCount({
+          counts,
+          setCounts,
+          currentKey,
+          selectedSize,
+          delta: 1,
+          mode,
+          selectedDate,
+          onSaved: () => {
+              setStockInfo({
+                 inherited: false,
+                 sourceDate: null
+              });
+          }    
+      });
+
   };
   
   const decreaseCount = () => {
-    setCounts((prev) => {
-  
-      const data = { ...(prev[currentKey] || {}) };
-  
-      data[selectedSize] = Math.max(
-        0,
-        (data[selectedSize] || 0) - 1
-      );
-  
-      return {
-        ...prev,
-        [currentKey]: data
-      };
-  
-    });
-  };  
+
+      updateCurrentCount({
+          counts,
+          setCounts,
+          currentKey,
+          selectedSize,
+          delta: -1,
+          mode,
+          selectedDate
+      });
+
+  };
 
   useEffect(() => {
+  
+      console.log("① selectedDate =", selectedDate);
+  
+      setOrderCounts(
+          loadOrderData(selectedDate)
+      );
 
-    const savedOrder = localStorage.getItem(
-      `factoryOrder_${selectedDate}`
-    );
-  
-    setOrderCounts(
-      savedOrder ? JSON.parse(savedOrder) : {}
-    );
-  
-    const savedStock = localStorage.getItem(
-      `factoryStock_${selectedDate}`
-    );
-  
-    setStockCounts(
-      savedStock ? JSON.parse(savedStock) : {}
-    );
-  
+      const data = getInitialStockData(selectedDate);
+      
+      setStockCounts(data);
+      
+      setStockInfo({
+          inherited: data._meta?.inherited ?? false,
+          sourceDate: data._meta?.sourceDate ?? null
+      });
   }, [selectedDate]);
-
-  useEffect(() => {
-
-    localStorage.setItem(
-        `factoryOrder_${selectedDate}`,
-        JSON.stringify(orderCounts)
-    );
-
-  }, [orderCounts, selectedDate]);
-  
-  useEffect(() => {
-  
-      localStorage.setItem(
-          `factoryStock_${selectedDate}`,
-          JSON.stringify(stockCounts)
-      );
-  
-  }, [stockCounts, selectedDate]);
 
   const basicTotal = Object.entries(counts)
     .filter(([key]) => key.includes("_기본_"))
@@ -149,6 +143,11 @@ function App() {
 
   const todayTotal = basicTotal + denseTotal;
 
+  const [stockInfo, setStockInfo] = useState({
+      inherited: false,
+      sourceDate: null
+  });
+
   return (
     <div className="app">
 
@@ -161,9 +160,28 @@ function App() {
       mode={mode}
       setMode={setMode}
     />
-
-      {mode !== "result" && (
-      <div className="card">
+    
+    {mode === "stock" && stockInfo.inherited && (
+        <div
+            style={{
+                margin: "10px 0",
+                padding: "10px 14px",
+                borderRadius: "8px",
+                backgroundColor: "#FFF8E1",
+                color: "#8A6D3B",
+                fontWeight: "600",
+                textAlign: "center"
+            }}
+        >
+            <div>📦 이전 재고를 불러왔습니다.</div>
+            <div style={{ fontSize: "13px", fontWeight: "400" }}>
+                기준일 : {stockInfo.sourceDate}
+            </div>
+        </div>
+    )}
+    
+    {mode !== "result" && (
+        <div className="card">
 
 <ProductSelector
   product={product}

@@ -41,7 +41,7 @@ h1 {
   text-align: left;
 }
 h2 {
-  margin:0 0 6px;
+  margin:0 0 2px;
   font-size:22px;
   font-weight:700;
   text-align:left;
@@ -215,7 +215,7 @@ select{
 .mode-group{
     display:flex;
     gap:10px;
-    margin-bottom:8px;
+    margin-bottom:4px;
 }
 
 .mode-group button{
@@ -301,7 +301,7 @@ select{
 
     padding-top:0px;
 
-    margin-bottom:6px;
+    margin-bottom:2px;
 }
 
 .color-column,
@@ -520,7 +520,7 @@ select{
 .section-divider{
     border:none;
     border-top:1px solid #e5e5e5;
-    margin:0 0 4px 0;
+    margin:0;
 }
 
 .current-row{
