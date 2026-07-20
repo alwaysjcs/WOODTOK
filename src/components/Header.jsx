@@ -4,28 +4,6 @@ import logo from "../assets/woodtok-logo.png";
 function Header({ selectedDate, setSelectedDate }) {
   const dateRef = useRef(null);
 
-  const openDatePicker = () => {
-
-    const input = dateRef.current;
-  
-    if (!input) return;
-  
-    // Chrome
-    if (typeof input.showPicker === "function") {
-      try {
-        input.showPicker();
-        return;
-      } catch (_) {}
-    }
-  
-    // Safari
-    input.focus();
-  
-    setTimeout(() => {
-      input.click();
-    }, 0);
-  };
-
   const week = ["일", "월", "화", "수", "목", "금", "토"];
 
   const date = new Date(selectedDate);
