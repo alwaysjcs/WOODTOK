@@ -44,26 +44,26 @@ function Header({ selectedDate, setSelectedDate }) {
       />
     </div>
 
-    <div
-      className="header-date"
-      onClick={openDatePicker}
+    <div className="header-date"
     >
       📅 {displayDate}
 
-      <input
-        ref={dateRef}
-        type="date"
-        value={selectedDate}
-        onChange={(e) => {
+      📅 {displayDate}
 
-            if (!e.target.value) {
-                return;
-            }
-        
-            setSelectedDate(e.target.value);
-        
-        }}
-        className="hidden-date-input"
+      <input
+          ref={dateRef}
+          type="date"
+          value={selectedDate}
+          onChange={(e) => {
+      
+              if (!e.target.value) {
+                  return;
+              }
+      
+              setSelectedDate(e.target.value);
+      
+          }}
+          className="header-date-input"
       />
     </div>
   </header>
