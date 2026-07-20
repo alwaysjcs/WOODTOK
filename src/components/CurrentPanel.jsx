@@ -18,43 +18,27 @@ function CurrentPanel({
           : "재고 입력"}
       </h2>
 
-      <div className="current-row">
+<div className="current-panel">
 
-  <div className="current-panel">
+  <button
+    type="button"
+    className="plus-button"
+    onClick={increaseCount}
+  >
+    ＋
+  </button>
 
-    <div className="current-info">
-      {product} · {type} · {color}
-    </div>
-
-    <div className="current-size">
-      {selectedSize}
-    </div>
-
-    <div className="current-label">
-      현재 수량 : {currentCount}개
-    </div>
-
+  <div className="current-label">
+    {currentCount}개
   </div>
 
-  <div className="current-buttons">
-
-    <button
-      type="button"
-      className="plus-button"
-      onClick={increaseCount}
-    >
-      ＋
-    </button>
-
-    <button
-      type="button"
-      className="minus-button"
-      onClick={decreaseCount}
-    >
-      －
-    </button>
-
-  </div>
+  <button
+    type="button"
+    className="minus-button"
+    onClick={decreaseCount}
+  >
+    －
+  </button>
 
 </div>
     </>

@@ -108,28 +108,15 @@ select{
 }
 
 .current-panel{
-    margin-top:6px;
-    padding:6px 8px 2px 8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-top:4px;
+    padding:8px 12px;
+
     border:2px solid #1976d2;
     border-radius:12px;
-    text-align:center;
-}
-
-.plus-button,
-.minus-button{
-
-    width:58px;
-    height:58px;
-
-    border:none;
-
-    border-radius:12px;
-
-    font-size:34px;
-
-    font-weight:700;
-
-    cursor:pointer;
 }
 
 .plus-button:active,
@@ -140,7 +127,7 @@ select{
 .size-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   margin-top: 0px;
   font-size: 22px;
 }
@@ -151,32 +138,18 @@ select{
   border: 2px solid #1976d2;
   border-radius: 10px;
   background: white;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
+  padding: 0 14px;
   cursor: pointer;
 }
 
 .size-button.active {
   background: #1976d2;
   color: white;
-}
-
-.summary-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    margin-top:8px;
-    padding-top:8px;
-
-    border-top:1px solid #ddd;
-
-    font-size:20px;
-    font-weight:700;
 }
 
 .summary-result{
@@ -337,16 +310,6 @@ select{
     height:40px;
 }
 
-.size-list {
-    gap: 6px;
-}
-
-.size-button {
-    height: 40px;
-    padding: 0 14px;
-    font-size: 20px;
-}
-
 .inline-selector{
     display:flex;
     align-items:center;
@@ -406,7 +369,7 @@ select{
 
     background:#ffffff;
 
-    padding:4px 12px;
+    padding:8px 12px;
 
     margin-bottom:4px;
 
@@ -416,12 +379,13 @@ select{
 }
 
 .header-left{
+    flex:1;
     display:flex;
     align-items:center;
 }
 
 .header-logo{
-    height:52px;
+    height:72px;
     width:auto;
     display:block;
 }
@@ -433,7 +397,7 @@ select{
     align-items:center;
     gap:8px;
 
-    font-size:20px;
+    font-size:18px;
     font-weight:700;
     min-height: 64px;
 
@@ -484,27 +448,30 @@ select{
 }
 
 .current-label{
-    font-size:22px;
+    flex:1;
+
+    text-align:center;
+
+    font-size:26px;
     font-weight:700;
     color:#333;
 
-    margin-top:2px;
-    margin-bottom:0;
+    margin:0;
 
-    line-height:1.1;
+    line-height:1;
 }
 
 .plus-button,
 .minus-button{
 
-    width:64px;
-    height:64px;
+    width:120px;
+    height:56px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:12px;
 
-    font-size:34px;
+    font-size:38px;
 
     font-weight:700;
 
