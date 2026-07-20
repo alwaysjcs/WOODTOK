@@ -48,8 +48,6 @@ function Header({ selectedDate, setSelectedDate }) {
     >
       📅 {displayDate}
 
-      📅 {displayDate}
-
       <input
           ref={dateRef}
           type="date"
