@@ -413,20 +413,20 @@ select{
 
     display:flex;
     align-items:center;
-    gap:4px;
+    gap:8px;
 
-    font-size:16px;
-    font-weight:600;
-    min-height: 48px;
+    font-size:20px;
+    font-weight:700;
+    min-height: 64px;
 
     background:#f5f7fa;
-    border-radius:8px;
+    border-radius:12px;
 
     cursor:pointer;
 
     overflow:hidden;
     min-height: 56px;
-    padding: 14px 18px;
+    padding: 16px 20px;
     -webkit-tap-highlight-color: transparent;
 }
 
