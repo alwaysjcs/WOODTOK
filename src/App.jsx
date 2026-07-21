@@ -22,8 +22,6 @@ import {
 function App() {
   const week = ["일", "월", "화", "수", "목", "금", "토"];
   
-  console.log("v1.0.1");
-  
   const formatDate = (date) => {
     return date.toISOString().split("T")[0];
   };
