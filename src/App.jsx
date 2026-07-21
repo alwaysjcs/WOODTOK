@@ -11,6 +11,7 @@ import TypeSelector from "./components/TypeSelector";
 import ColorSelector from "./components/ColorSelector";
 import { PRODUCTS } from "./constants/products";
 import { updateCurrentCount } from "./services/countService";
+import OCRImageSelector from "./components/OCRImageSelector";
 
 import {
     loadOrderData,
@@ -41,6 +42,13 @@ function App() {
   const [type, setType] = useState("기본");
   const [color, setColor] = useState("오크");
   const [selectedSize, setSelectedSize] = useState("616");
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const previewUrl =
+    selectedImage
+        ? URL.createObjectURL(selectedImage)
+        : null;
 
   const [orderCounts, setOrderCounts] = useState(() =>
       loadOrderData(formatDate(new Date()))
@@ -106,6 +114,12 @@ function App() {
       });
 
   };
+
+  const handleImageSelect = (file) => {
+    console.log("선택된 이미지 :", file);
+
+    setSelectedImage(file);
+};
 
   useEffect(() => {
   
@@ -201,6 +215,24 @@ function App() {
     
     {mode !== "result" && (
         <div className="card">
+
+<OCRImageSelector
+    onImageSelect={handleImageSelect}
+/>
+
+{previewUrl && (
+    <div style={{ marginBottom: "15px" }}>
+        <img
+            src={previewUrl}
+            alt="작업지시서"
+            style={{
+                width: "100%",
+                borderRadius: "10px",
+                border: "1px solid #ddd",
+            }}
+        />
+    </div>
+)}
 
 <ProductSelector
   product={product}
