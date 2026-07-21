@@ -1,4 +1,8 @@
-function TypeSelector({ type, setType }) {
+function TypeSelector({
+  product,
+  type,
+  setType
+}) {
   return (
     <div className="inline-selector">
 
@@ -15,13 +19,15 @@ function TypeSelector({ type, setType }) {
           기본
         </button>
 
-        <button
-          type="button"
-          className={type === "촘촘" ? "active" : ""}
-          onClick={() => setType("촘촘")}
-        >
-          촘촘
-        </button>
+        {product === "스트라이프" && (
+           <button
+             type="button"
+             className={type === "촘촘" ? "active" : ""}
+             onClick={() => setType("촘촘")}
+           >
+             촘촘
+           </button>
+         )}
       </div>
 
     </div>

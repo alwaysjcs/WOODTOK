@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { PRODUCTS } from "../constants/products";
 import "../styles/ResultView.css";
 import productIcon from "../assets/icons/product.svg";
 
 function ResultView({
   product,
+  setProduct,
   selectedDate,
   orderCounts,
   stockCounts
 }) {
-
+  
+  const [showShortageOnly, setShowShortageOnly] = useState(false);
   const week = ["일", "월", "화", "수", "목", "금", "토"];
 
   const displayDate = new Date(selectedDate);
@@ -57,7 +60,19 @@ function ResultView({
     let totalStock = 0;
     let totalShortage = 0;
 
-
+  const hasShortage = colors.some((color) => {
+    const key = `${product}_${type}_${color}`;
+  
+    const order = orderCounts[key]?.[size] ?? 0;
+    const stock = stockCounts[key]?.[size] ?? 0;
+  
+    return Math.max(order - stock, 0) > 0;
+  });
+  
+  if (showShortageOnly && !hasShortage) {
+    return null;
+  }
+  
     
     return (
       <div key={size} className="result-size-card">
@@ -90,6 +105,21 @@ function ResultView({
                             totalOrder += order;
               totalStock += stock;
               totalShortage += shortage;
+
+              if (showShortageOnly && shortage === 0) {
+                return null;
+              }
+                                         
+              return (
+                <tr key={color}>
+                  <td>{color}</td>
+                  <td>{order}</td>
+                  <td>{stock}</td>
+                  <td className={shortage ? "shortage" : ""}>
+                    {shortage}
+                  </td>
+                </tr>
+              );
 
               return (
                 <tr key={color}>
@@ -141,12 +171,35 @@ return (
       <h2>결과</h2>
 
       <div className="result-product">
-         <img
-             src={productIcon}
-             alt=""
-             className="result-product-icon"
-         />
-         <span>{product}</span>
+        <button
+          type="button"
+          className={`product-button ${product === "스트라이프" ? "active" : ""}`}
+          onClick={() => setProduct("스트라이프")}
+        >
+          스트라이프
+        </button>
+      
+        <button
+          type="button"
+          className={`product-button ${product === "가벽" ? "active" : ""}`}
+          onClick={() => setProduct("가벽")}
+        >
+          가벽
+        </button>
+      </div>
+
+      <div className="shortage-filter">
+
+        <label>
+          <input
+            type="checkbox"
+            checked={showShortageOnly}
+            onChange={(e) => setShowShortageOnly(e.target.checked)}
+          />
+      
+          부족만 보기
+        </label>
+      
       </div>
 
       {Object.keys(PRODUCTS[product])

@@ -23,9 +23,11 @@ function CurrentPanel({
   <button
     type="button"
     className="plus-button"
-    onClick={increaseCount}
+    className="minus-button"
+    onClick={decreaseCount}
+    
   >
-    ＋
+    －
   </button>
 
   <div className="current-label">
@@ -34,10 +36,10 @@ function CurrentPanel({
 
   <button
     type="button"
-    className="minus-button"
-    onClick={decreaseCount}
+    className="plus-button"
+    onClick={increaseCount}
   >
-    －
+    ＋
   </button>
 
 </div>

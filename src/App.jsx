@@ -51,8 +51,8 @@ function App() {
   );
 
   const types = Object.keys(PRODUCTS[product]).filter(
-  (key) => key !== "colors"
-  );
+  (key) => key !== "colors" && key !== "기타"
+);
 
   const colors = PRODUCTS[product].colors;
 
@@ -124,6 +124,12 @@ function App() {
           sourceDate: data._meta?.sourceDate ?? null
       });
   }, [selectedDate]);
+
+  useEffect(() => {
+    if (product === "가벽" && type !== "기본") {
+      setType("기본");
+    }
+}, [product, type]);
 
   const basicTotal = Object.entries(counts)
     .filter(([key]) => key.includes("_기본_"))
@@ -203,10 +209,12 @@ function App() {
 <hr className="section-divider" />
 
 <TypeSelector
+    product={product}
     types={types}
     type={type}
     setType={setType}
 />
+
 <hr className="section-divider" />
 <div className="color-size-row">
 
@@ -273,6 +281,7 @@ function App() {
 
     <ResultView
       product={product}
+      setProduct={setProduct}
       selectedDate={selectedDate}
       orderCounts={orderCounts}
       stockCounts={stockCounts}
