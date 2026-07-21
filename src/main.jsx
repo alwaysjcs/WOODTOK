@@ -11,6 +11,16 @@ createRoot(document.getElementById("root")).render(
   </StrictMode>
 );
 
-registerSW({
+const updateSW = registerSW({
   immediate: true,
+
+  onNeedRefresh() {
+    if (confirm("새 버전이 있습니다.\n업데이트하시겠습니까?")) {
+      updateSW(true);
+    }
+  },
+
+  onOfflineReady() {
+    console.log("WOODTOK Offline Ready");
+  },
 });
