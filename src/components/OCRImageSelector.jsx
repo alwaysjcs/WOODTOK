@@ -27,7 +27,7 @@ export default function OCRImageSelector({ onImageSelect }) {
           cursor: "pointer",
         }}
       >
-        📷 작업지시서 선택
+        📷 작업지시서 가져오기
       </button>
 
       <input
