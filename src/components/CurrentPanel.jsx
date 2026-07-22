@@ -22,10 +22,11 @@ function CurrentPanel({
 
   <button
     type="button"
-    className="plus-button"
     className="minus-button"
-    onClick={decreaseCount}
-    
+    onClick={() => {
+      haptic();
+      decreaseCount();
+    }}
   >
     －
   </button>
@@ -37,7 +38,10 @@ function CurrentPanel({
   <button
     type="button"
     className="plus-button"
-    onClick={increaseCount}
+    onClick={() => {
+      haptic();
+      decreaseCount();
+    }}
   >
     ＋
   </button>
@@ -46,5 +50,12 @@ function CurrentPanel({
     </>
   );
 }
+
+const haptic = () => {
+  if (navigator.vibrate) {
+    navigator.vibrate(20);
+  }
+};
+
 
 export default CurrentPanel;
