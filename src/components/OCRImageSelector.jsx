@@ -31,12 +31,11 @@ export default function OCRImageSelector({ onImageSelect }) {
       </button>
 
       <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        capture="environment"
-        style={{ display: "none" }}
-        onChange={handleChange}
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={handleChange}
       />
     </div>
   );
