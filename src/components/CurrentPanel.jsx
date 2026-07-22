@@ -23,10 +23,8 @@ function CurrentPanel({
   <button
     type="button"
     className="minus-button"
-    onClick={() => {
-      haptic();
-      decreaseCount();
-    }}
+    onClick={decreaseCount}
+    
   >
     －
   </button>
@@ -38,10 +36,7 @@ function CurrentPanel({
   <button
     type="button"
     className="plus-button"
-    onClick={() => {
-      haptic();
-      decreaseCount();
-    }}
+    onClick={increaseCount}
   >
     ＋
   </button>
