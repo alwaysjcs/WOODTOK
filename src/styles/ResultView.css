@@ -188,3 +188,12 @@
     background: #2f80ed;
     color: #ffffff;
 }
+
+.result-toolbar{
+    position: sticky;
+    top: 64px;
+    z-index: 90;
+    background: #fff;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}

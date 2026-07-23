@@ -166,9 +166,9 @@ const total = {
 };
 
 return (
-    <div className="card">
+  <div className="card">
 
-      <h2>결과</h2>
+    <div className="result-toolbar">
 
       <div className="result-product">
         <button
@@ -178,7 +178,7 @@ return (
         >
           스트라이프
         </button>
-      
+
         <button
           type="button"
           className={`product-button ${product === "가벽" ? "active" : ""}`}
@@ -189,62 +189,69 @@ return (
       </div>
 
       <div className="shortage-filter">
-
         <label>
           <input
             type="checkbox"
             checked={showShortageOnly}
             onChange={(e) => setShowShortageOnly(e.target.checked)}
           />
-      
           부족만 보기
         </label>
-      
       </div>
 
-      {Object.keys(PRODUCTS[product])
-        .filter((key) => key !== "colors")
-        .map((type) => {
+    </div>
 
-          const typeInfo = PRODUCTS[product][type];
-          const sizes = typeInfo.sizes;
+    {Object.keys(PRODUCTS[product])
+      .filter((key) => key !== "colors")
+      .map((type) => {
 
-          if (sizes.length === 0) {
-            return (
-              <div key={type}>
+        const typeInfo = PRODUCTS[product][type];
+        const sizes = typeInfo.sizes;
 
-                <div className="result-type-title">
-                  {type}
-                </div>
-
-                <div className="future-message">
-                  {typeInfo.message ?? "향후 정의 예정"}
-                </div>
-
-              </div>
-            );
-          }
-
+        if (sizes.length === 0) {
           return (
             <div key={type}>
-
               <div className="result-type-title">
                 {type}
               </div>
 
-              {sizes.map((size) =>
-                renderTable(type, size)
-              )}
-
+              <div className="future-message">
+                {typeInfo.message ?? "향후 정의 예정"}
+              </div>
             </div>
           );
+        }
 
-        })}
-              <div className="summary-card">
+        return (
+          <div key={type}>
 
-        <h3>집계</h3>
+            <div className="result-type-title">
+              {type}
+            </div>
 
-        <table className="summary-table">
+            {sizes.map((size) =>
+              renderTable(type, size)
+            )}
+
+          </div>
+        );
+
+      })}
+
+    <div className="summary-card">
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           <thead>
             <tr>
