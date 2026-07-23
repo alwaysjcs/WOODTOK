@@ -78,8 +78,8 @@ select{
 }
 
 .button-group button {
-  flex: 1;
-  min-width: 90px;
+  flex: none;
+  width: 140px;
   height: 40px;
 
   border: 2px solid var(--primary);
@@ -309,7 +309,7 @@ select{
     align-items:center;
     gap:10px;
 
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 .inline-label{

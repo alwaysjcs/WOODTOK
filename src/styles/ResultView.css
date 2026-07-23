@@ -193,7 +193,37 @@
     position: sticky;
     top: 64px;
     z-index: 90;
+
     background: #fff;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #ddd;
+
+    padding: 8px;
+
+    border-radius: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    border-bottom: none;
+}
+
+.result-toolbar-top{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.result-toolbar-title{
+    font-size:18px;
+    font-weight:700;
+    white-space:nowrap;
+    min-width:42px;
+}
+
+.shortage-filter{
+    margin-top:6px;
+    font-size:15px;
+}
+
+.shortage-filter label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
 }

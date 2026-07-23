@@ -1,17 +1,15 @@
-import { useState } from "react";
 import { PRODUCTS } from "../constants/products";
 import "../styles/ResultView.css";
-import productIcon from "../assets/icons/product.svg";
 
 function ResultView({
-  product,
-  setProduct,
-  selectedDate,
-  orderCounts,
-  stockCounts
-}) {
+    product,
+    selectedDate,
+    orderCounts,
+    stockCounts,
+    showShortageOnly
+})
+{
   
-  const [showShortageOnly, setShowShortageOnly] = useState(false);
   const week = ["일", "월", "화", "수", "목", "금", "토"];
 
   const displayDate = new Date(selectedDate);
@@ -168,39 +166,6 @@ const total = {
 return (
   <div className="card">
 
-    <div className="result-toolbar">
-
-      <div className="result-product">
-        <button
-          type="button"
-          className={`product-button ${product === "스트라이프" ? "active" : ""}`}
-          onClick={() => setProduct("스트라이프")}
-        >
-          스트라이프
-        </button>
-
-        <button
-          type="button"
-          className={`product-button ${product === "가벽" ? "active" : ""}`}
-          onClick={() => setProduct("가벽")}
-        >
-          가벽
-        </button>
-      </div>
-
-      <div className="shortage-filter">
-        <label>
-          <input
-            type="checkbox"
-            checked={showShortageOnly}
-            onChange={(e) => setShowShortageOnly(e.target.checked)}
-          />
-          부족만 보기
-        </label>
-      </div>
-
-    </div>
-
     {Object.keys(PRODUCTS[product])
       .filter((key) => key !== "colors")
       .map((type) => {
@@ -211,6 +176,7 @@ return (
         if (sizes.length === 0) {
           return (
             <div key={type}>
+
               <div className="result-type-title">
                 {type}
               </div>
@@ -218,6 +184,7 @@ return (
               <div className="future-message">
                 {typeInfo.message ?? "향후 정의 예정"}
               </div>
+
             </div>
           );
         }
@@ -240,61 +207,50 @@ return (
 
     <div className="summary-card">
 
+      <h3>집계</h3>
 
+      <table className="summary-table">
 
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>주문</th>
+            <th>재고</th>
+            <th>부족</th>
+          </tr>
+        </thead>
 
+        <tbody>
 
+          <tr>
+            <td>기본</td>
+            <td>{basic.order}</td>
+            <td>{basic.stock}</td>
+            <td>{basic.shortage}</td>
+          </tr>
 
+          <tr>
+            <td>촘촘</td>
+            <td>{dense.order}</td>
+            <td>{dense.stock}</td>
+            <td>{dense.shortage}</td>
+          </tr>
 
+          <tr className="summary-total">
+            <td>전체</td>
+            <td>{total.order}</td>
+            <td>{total.stock}</td>
+            <td>{total.shortage}</td>
+          </tr>
 
+        </tbody>
 
+      </table>
 
-
-
-
-
-          <thead>
-            <tr>
-              <th>구분</th>
-              <th>주문</th>
-              <th>재고</th>
-              <th>부족</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr>
-              <td>기본</td>
-              <td>{basic.order}</td>
-              <td>{basic.stock}</td>
-              <td>{basic.shortage}</td>
-            </tr>
-
-            <tr>
-              <td>촘촘</td>
-              <td>{dense.order}</td>
-              <td>{dense.stock}</td>
-              <td>{dense.shortage}</td>
-            </tr>
-
-            <tr className="summary-total">
-              <td>전체</td>
-              <td>{total.order}</td>
-              <td>{total.stock}</td>
-              <td>{total.shortage}</td>
-            </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
     </div>
-  
 
-  
-  );
+  </div>
+);
 }
 
 export default ResultView;

@@ -1,11 +1,17 @@
-function ProductSelector({ product, setProduct }) {
+function ProductSelector({
+    product,
+    setProduct,
+    showTitle = true
+}) {
   return (
     <div className="inline-selector">
 
-      <div className="inline-label">
-        제품
-      </div>
-
+      {showTitle && (
+        <div className="section-title">
+          제품
+        </div>
+      )}
+      
       <div className="button-group">
         <button
           type="button"

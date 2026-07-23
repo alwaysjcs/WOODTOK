@@ -12,6 +12,7 @@ import ColorSelector from "./components/ColorSelector";
 import { PRODUCTS } from "./constants/products";
 import { updateCurrentCount } from "./services/countService";
 import OCRImageSelector from "./components/OCRImageSelector";
+import ResultToolbar from "./components/ResultToolbar";
 
 import {
     loadOrderData,
@@ -67,6 +68,8 @@ function App() {
   const sizes = PRODUCTS[product][type]?.sizes ?? [];
 
   const [mode, setMode] = useState("order");
+
+  const [showShortageOnly, setShowShortageOnly] = useState(false);
 
   const currentKey = `${product}_${type}_${color}`;
   const counts = mode === "order"
@@ -308,19 +311,22 @@ function App() {
 )}
 
 {mode === "result" && (
+    <>
+        <ResultToolbar
+            product={product}
+            setProduct={setProduct}
+            showShortageOnly={showShortageOnly}
+            setShowShortageOnly={setShowShortageOnly}
+        />
 
-  <>
-
-    <ResultView
-      product={product}
-      setProduct={setProduct}
-      selectedDate={selectedDate}
-      orderCounts={orderCounts}
-      stockCounts={stockCounts}
-    />
-
-  </>
-
+        <ResultView
+            product={product}
+            selectedDate={selectedDate}
+            orderCounts={orderCounts}
+            stockCounts={stockCounts}
+            showShortageOnly={showShortageOnly}
+        />
+    </>
 )}
 
   </div>
